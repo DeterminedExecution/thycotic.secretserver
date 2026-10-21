@@ -33,6 +33,7 @@ If you've been seeing `Cannot convert value` errors on older module releases, up
 | [Get-TssConfiguration]              | 10.9.000032               |
 | [Get-TssFolder] (-FolderPath param) | 11.0.000005               |
 | [Get-TssMetadataField]              | 10.9.000064               |
+| [Get-TssPlatformVault]              | 11.10.000000              |
 | [Get-TssReportSchedule]             | 10.9.000032               |
 | [Get-TssSecret] (-Path param)       | 11.0.000005               |
 | [Get-TssSecretAudit]                | 10.9.000032               |
@@ -53,6 +54,7 @@ If you've been seeing `Cannot convert value` errors on older module releases, up
 | [Set-TssSecretPolicy]               | 11.0.000005               |
 | [Set-TssConfigurationAutoExport]    | 11.0.000005               |
 
+[Get-TssPlatformVault]:/thycotic.secretserver/commands/platform/Get-TssPlatformVault
 [Get-TssSecretAudit]:/thycotic.secretserver/commands/secrets/Get-TssSecretAudit
 [Get-TssUserRoleAssigned]:/thycotic.secretserver/commands/users/Get-TssUserRoleAssigned
 [Get-TssSecretState]:/thycotic.secretserver/commands/secrets/Get-TssSecretState

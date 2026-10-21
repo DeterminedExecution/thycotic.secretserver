@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.63.0 -- unreleased
+
+### New Stuff
+
+#### Platform
+
+* `Get-TssPlatformVault` - Get the Secret Server vaults the Delinea Platform vault broker returns (GET vaultbroker/api/vaults on the Platform).
+
+### General Updates
+
+* `New-TssSession` - Delinea Platform authentication (Refs #481): new parameter sets `platform` (`-PlatformUrl -Credential`, Platform service user, client credentials grant) and `platformToken` (`-PlatformUrl -AccessToken`), with `-VaultId`, `-SecretServer` (vault override), `-AllowedVaultHost` and `-AutoRefresh`. The vault comes from the Platform vault broker and must pass a trust check (https, Secret Server Cloud host, the Platform host, or `-AllowedVaultHost`). Existing parameter sets, positions, the `nts` alias and the output type are unchanged.
+* `TssSession` - new properties `AuthProvider` (default `SecretServer`), `PlatformUrl`, `VaultId`, `VaultType`, `IsPlatformToken`, read-only `AutoRefresh`; `SessionRefresh()` re-grants a Platform token only with `-AutoRefresh` (client secret held as a private SecureString, #455); `SessionExpire()` does not call oauth-expiration for Platform tokens.
+* `Close-TssSession` - a Platform session returns False with a verbose note instead of calling oauth-expiration.
+* Docs: "Delinea Platform" section on the Authentication getting started page.
+
+### Bug Fixes
+
+* Verbose output - the "Command invocation" line (private Get-TssInvocation) printed `-AccessToken` and `-OtpCode` values; values of `-AccessToken`, `-OtpCode`, `-ClientSecret`, `-OnboardingKey` and `-PersonalAccessToken` now print as `Redacted`, and a parameter of a type the line does not render (for example `[uri]`) no longer repeats the previous parameter's value.
+
+### Tests
+
+* Shape tests (known parameters, no unknown parameters, OutputType) for `Get-TssPlatformVault`.
+* Existing shape test extended for the new parameters and parameter sets: `New-TssSession`.
+
 ## 0.62.1 -- 2026-06-29
 
 ### Breaking Changes
